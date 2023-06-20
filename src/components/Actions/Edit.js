@@ -44,7 +44,7 @@ const Edit = () => {
           name="id"
           placeholder="Enter your id"
           value={id}
-          onChange={onInputChange}
+          disabled
         />
         <P>Title</P>
         <INPUT
@@ -55,7 +55,7 @@ const Edit = () => {
           onChange={onInputChange}
         />
         <P>Description</P>
-        <INPUT
+        <TEXTAREA
           type="text"
           name="description"
           placeholder="Enter Description"
@@ -95,6 +95,15 @@ const INPUT = styled.input`
   border: 1px solid;
   border-radius: 4px;
 `;
+
+const TEXTAREA = styled.textarea`
+  width: 30%;
+  height: 10em;
+  ${"" /* margin-bottom:2px; */}
+  border: 1px solid;
+  border-radius: 4px;
+`;
+
 const B = styled(Button)`
   left: 10px;
 `;

@@ -24,14 +24,15 @@ const AddTask = () => {
     await axios.post("http://localhost:3003/tasks", task);
     navigate("/");
   };
+
   return (
     <div>
       <COL offset={10}>
-        <P>Id</P>
+        <P>S.No</P>
         <INPUT
-          type="id"
+          type="number"
           name="id"
-          placeholder="Enter your id"
+          placeholder="Serial Number"
           value={id}
           onChange={onInputChange}
         />
@@ -44,7 +45,7 @@ const AddTask = () => {
           onChange={onInputChange}
         />
         <P>Description</P>
-        <INPUT
+        <TEXTAREA
           type="text"
           name="description"
           placeholder="Enter Description"
@@ -55,15 +56,23 @@ const AddTask = () => {
         <INPUT
           type="text"
           name="status"
-          placeholder="Status: "
+          placeholder="Status of the Task"
           value={status}
           onChange={onInputChange}
         />
       </COL>
       <Col style={{ marginTop: "10px" }} offset={11}>
-        <Button onClick={onSubmit} type="primary">
-          <FaCheck />
-        </Button>
+        {id !== "" &&
+        status !== "" &&
+        description !== "" &&
+        title !== "" &&
+        status !== "" ? (
+          <Button onClick={onSubmit} type="primary">
+            <FaCheck />
+          </Button>
+        ) : (
+          "fill all fields"
+        )}
         <B href="/">
           <GiCancel />
         </B>
@@ -82,10 +91,18 @@ const P = styled.p``;
 const INPUT = styled.input`
   width: 30%;
   height: 2em;
+  border: 1px solid;
+  border-radius: 4px;
+`;
+
+const TEXTAREA = styled.textarea`
+  width: 30%;
+  height: 10em;
   ${"" /* margin-bottom:2px; */}
   border: 1px solid;
   border-radius: 4px;
 `;
+
 const B = styled(Button)`
   left: 10px;
 `;

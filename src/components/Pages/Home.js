@@ -65,9 +65,9 @@ const Home = () => {
     <div>
       {tasks?.length ? (
         <TABLE
+        size="large"
           rowKey={(record) => record.id}
           columns={cols}
-          pagination={false}
           expandable={{
             expandedRowRender: (record) => (
               <p
@@ -75,13 +75,16 @@ const Home = () => {
                   margin: 0,
                 }}
               >
+                Description :
+                <br />
                 {record.description}
               </p>
             ),
           }}
           dataSource={tasks}
+          caption="Task List"
         />
-      ) : null}
+      ) : <Table columns={cols} loading={true} />}
     </div>
   );
 };

@@ -15,13 +15,13 @@ const App = () => {
         <A to="/contact">Contact</A>
         <Add to="/task/add">Add Task</Add>
       </NAV>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/task/add" element={<AddTask />} />
-          <Route path="/task/edit/:id" element={<Edit />} />
-        </Routes>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/task/add" element={<AddTask />} />
+        <Route path="/task/edit/:id" element={<Edit />} />
+      </Routes>
     </>
   );
 };
@@ -34,7 +34,7 @@ const A = styled(Link)`
 `;
 
 const NAV = styled.nav`
-  ${'' /* display: flex; */}
+  ${"" /* display: flex; */}
   width: 100%;
   padding: 1rem 1rem;
   border: 2px solid gray;
