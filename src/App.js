@@ -11,34 +11,34 @@ import Search from "antd/es/input/Search";
 import { Col, Row } from "antd";
 
 const App = () => {
-  const [value, setValue] = useState()
-  const handleChange = (e) => {   
+  const [value, setValue] = useState();
+  const handleChange = (e) => {
     setValue(e.target.value);
-  }
+  };
 
   return (
     <>
-    <Row>
-      <Col span={12}>
-        <A to="/">Home</A>
-        <A to="/about">About</A>
-        <A to="/contact">Contact</A>
+      <StyledRow>
+        <Col span={12} style={{ display: "flex", alignItems: "center" }}>
+          <A to="/">Home</A>
+          <A to="/about" style={{margin:'0 2em'}}>About</A>
+          <A to="/contact">Contact</A>
         </Col>
-        <Col span={4}>
-        <Search
-              style={{
-                width: "100%",
-              }}
-              placeholder="Search location"
-              onChange={handleChange}
-              allowClear
-              enterButton
-            />
-            </Col>
-        <Add to="/task/add">Add Task</Add>
-      </Row>
+        <Col className="styled-search" span={4}>
+          <Search
+            style={{
+              width: "100%",
+            }}
+            placeholder="Search location"
+            onChange={handleChange}
+            allowClear
+            enterButton
+          />
+        </Col>
+        <Add className="add-task" to="/task/add">Add Task</Add>
+      </StyledRow>
       <Routes>
-        <Route path="/" element={<Home value={value}/>} />
+        <Route path="/" element={<Home value={value} />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/task/edit/:id" element={<Edit />} />
@@ -48,12 +48,27 @@ const App = () => {
     </>
   );
 };
+const StyledRow = styled(Row)`
+padding: 20px;
+@media (max-width:767px){
+  display: block;
+  .styled-search {
+    margin: 10px 0;
+    max-width: 100% !important;
+  }
+  .add-task {
+    left: 7%;
+    width: 25%;
+    margin-bottom: 20px;
+  }
+}
+`;
 
 const A = styled(Link)`
   text-decoration: none;
-  margin-left: 2rem;
   color: red;
   cursor: pointer;
+  text-align: center;
 `;
 
 const NAV = styled.nav`
@@ -64,7 +79,7 @@ const NAV = styled.nav`
   box-shadow: 2px 2px gray;
   background: mintcream;
   overflow: hidden;
-  ${'' /* opacity: 0.5; */}
+  ${"" /* opacity: 0.5; */}
 `;
 
 const Add = styled(Link)`
@@ -76,6 +91,7 @@ const Add = styled(Link)`
   padding: 4px;
   border-radius: 4px;
   border: 2px solid gray;
+  text-align: center;
 `;
 
 export default App;

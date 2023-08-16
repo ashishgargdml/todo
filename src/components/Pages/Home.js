@@ -112,7 +112,7 @@ const Home = ({ value }) => {
 };
 
 const TABLE = styled(Table)`
-  margin-top: 10px;
+  margin-top: 20px;
   width: 100%;
   display: flex;
   justify-content: center;
